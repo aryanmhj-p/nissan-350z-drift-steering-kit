@@ -1,3 +1,6 @@
+> 📄 **Documentation Notice:**  
+> The comprehensive engineering methodology, mathematical derivations, CAD visual layouts, and full CarSim simulation outputs are thoroughly documented in the project report:  
+> 🔗 **[Read Full Engineering Report (PDF)](./docs/Nissan_350Z_Modular_Steering_Kit_Report.pdf)**
 # Modular High-Angle Steering Kit with Adjustable Ackermann (Nissan 350Z)
 
 [![SolidWorks](https://img.shields.io/badge/CAD-SolidWorks-red.svg)](#)
