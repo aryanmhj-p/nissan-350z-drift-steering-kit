@@ -34,3 +34,48 @@ $$\alpha_r > \alpha_f \implies \delta < 0 \quad \text{(Countersteer)}$$
 ---
 
 ## ⚙️ Engineering & Development Workflow
+
+### 1. Reverse Engineering & Point Cloud Processing
+- Processed the raw optical 3D scan data of the factory Nissan 350Z aluminum upright in **Geomagic Design X**.
+- Cleaned point clouds, extracted critical mounting surfaces, ball joint centers, and the kingpin axis.
+- Reconstructed reference datums and interface features in **SolidWorks** to ensure 100% bolt-on compatibility with OEM suspension components.
+
+### 2. Kinematic Synthesis & Mechanism Design
+- **Shorter Steering Arm:** Reduced tie-rod pickup radius ($r_{modified} < r_{OEM}$) to maximize lock per rack stroke, while accounting for increased tie-rod load ($M = F \cdot r$).
+- **Obround Modular Slot:** Designed a rotating insert mounted on the steering bracket, allowing continuous tuning of the tie-rod pickup point relative to the kingpin axis.
+- **Design for Manufacturing (DFM):** Prepared flat-pattern DXF layouts for laser cutting, bend allowances for CNC press brakes, and dimensional tolerances for CNC turning/milling.
+
+### 3. Steering Rack Relocation Modeling
+- Redesigned the crossmember mounting interfaces to shift the steering rack forward, eliminating the risk of tie-rod over-centering (steering bind) at $41^\circ$ lock.
+
+---
+
+## 📊 CarSim Dynamic Simulation
+
+A Nissan 350Z model was simulated on a **10-meter radius circular skidpad** (2nd gear, 100% throttle, locked differential) to evaluate the dynamic impact of Ackermann variation:
+
+| Parameter | Conventional Ackermann | Parallel Steering ($\Delta\delta = 0$) | Reverse Ackermann ($\Delta\delta < 0$) |
+| :--- | :---: | :---: | :---: |
+| **Trajectory Tracking** | Moderate drift-off | Least stable path maintenance | **Best path adherence & circular stability** |
+| **Vehicle Sideslip ($\beta$)** | Notable oscillation | Severe lateral fluctuations | **Smoothest & lowest variation** |
+| **Yaw Rate ($r$) Stability** | Intermediate spikes | Highly erratic fluctuations | **Consistent, dampened response** |
+| **Steering Torque Demand** | Highest driver effort | Medium | **Optimal & predictable countersteer torque** |
+
+---
+
+## 🛠️ Chassis Geometric Verification
+
+The design was fitted onto a stripped Nissan 350Z test chassis to verify kinematic lock and clearance:
+- **Measured Passenger Wheel Angle ($\delta_i$):** $38^\circ$
+- **Measured Driver Wheel Angle ($\delta_o$):** $41^\circ$
+- **Ackermann Difference ($\Delta\delta$):** $-3^\circ$ (Validated Slight Reverse Ackermann)
+- **Kinematic Check:** Verified clearance across full suspension travel and steering sweep with zero mechanical bind.
+
+---
+
+## 👥 Roles & Contributions
+
+- **Aryan Mahjoubi:** Point cloud processing (Geomagic), kinematic synthesis & CAD modeling (SolidWorks), subframe relocation modeling, DFM specifications, CarSim vehicle dynamics simulations, and geometric kinematic verification.
+- **Alireza Ostadi:** Part fabrication, workshop machining, chassis integration, and physical assembly.
+- **External Support:** Optical 3D scanning of the OEM knuckle.
+- **Academic Supervisor:** Dr. Saadat Foomani *(Department of Mechanical Engineering, Sharif University of Technology)*
